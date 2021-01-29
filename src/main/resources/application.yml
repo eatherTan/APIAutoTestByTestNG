@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/seventh?characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:/resources/mappers/*.xml
+  type-aliases-package: com.example.demo.dao
+server:
+  port: 8080
+  servlet:
+    context-path: /demo
+
+
