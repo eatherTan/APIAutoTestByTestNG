@@ -6,7 +6,7 @@ public class UserInfoDomain {
     private String name;
     private Integer age;
     private Integer gender;
-
+    private Integer isDeleted;
     public Long getId() {
         return id;
     }
@@ -37,5 +37,13 @@ public class UserInfoDomain {
 
     public void setGender(Integer gender) {
         this.gender = gender;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

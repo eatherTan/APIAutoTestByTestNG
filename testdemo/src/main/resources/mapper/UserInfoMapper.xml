@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.UserInfoDao">
+    <resultMap id="BaseResultMap"
+               type="com.example.entity.UserInfoDomain">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="INTEGER" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,age,gender,is_deleted
+    </sql>
+
+    <select id="queryUserInfoList" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from user_info
+        where is_deleted = 0
+    </select>
+</mapper>
