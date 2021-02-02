@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/pi/user/queryUserInfo")
 public class UserInfoController {
 
-    @Autowired
+    @Autowired(required=true)
     private UserInfoService userInfoService;
 
     /**
@@ -27,7 +27,7 @@ public class UserInfoController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public QueryUserInfoListResponse queryUserInfo(){
+    public QueryUserInfoListResponse queryUserInfo( ){
         QueryUserInfoListResponse response = new QueryUserInfoListResponse();
         List<UserInfoDomain> userInfoList = userInfoService.queryUserInfo();
         response.setUserInfoList(userInfoList);

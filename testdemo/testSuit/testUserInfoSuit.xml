@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="trinductionsvc">
+    <test name="Test2" >
+        <classes>
+            <class name="com.example.userinfo.QueryUserInfoTest">
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="listener.ExtentTestNGIReporterListener"></listener>
+    </listeners>
+</suite>
+
