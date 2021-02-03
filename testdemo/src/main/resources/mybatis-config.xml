@@ -15,6 +15,17 @@
         </environment>
     </environments>   <!-- 映射文件 -->
     <mappers>
-        <mapper resource="mapper/QueryUserInfoDao.xml"/>
+        <!-- 告知映射文件方式1，一个一个的配置-->
+         <mapper resource="mapper/QueryUserInfoDao.xml"/>
+        <!-- 告知映射文件方式2，自动扫描包内的Dao接口与配置文件 -->
+<!--        <package name="com.example.dao"/>-->
+<!--        <mapper resource="mapper/*.xml"/>-->
+
+        <!--&lt;!&ndash; 最简单的引用方式，直接引入xml文件 &ndash;&gt;
+        <mapper resource="config/TSysUserMapper.xml"/>
+        &lt;!&ndash; 引入mapper接口，但是需要配置文件名称和接口名称一致，并且位于同一目录下 &ndash;&gt;
+        <mapper class="cn.fqf.Mappers.TSysUserMapper"/>
+        &lt;!&ndash; 进行扫描，此包下的所有配置文件都将被引入，但是需要配置文件名称和接口名称一致，并且位于同一目录下 &ndash;&gt;
+        <package name="cn.fqf.mapper"/>-->
     </mappers>
 </configuration>

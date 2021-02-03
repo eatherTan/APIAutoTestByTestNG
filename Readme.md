@@ -20,8 +20,9 @@ httP://127.0.0.1:8080/demo/pi/user/queryUserInfo/list
 4. 接各种工具类Util
 5. 后面再增加token验证
 6. 把数据库的配置集中管理
+7. 对testNG的深度理解 掌握
 
-
+指南：https://github.com/Jsir07/TestHub
 
 指导：[Java接口自动化测试实战笔记](https://www.cnblogs.com/zylhxd/articles/10879351.html)  https://www.cnblogs.com/zylhxd/articles/10879351.html#extentreports  
 
