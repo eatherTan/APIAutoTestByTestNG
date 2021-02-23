@@ -8,9 +8,15 @@
 httP://127.0.0.1:8080/demo/pi/user/queryUserInfo/list
 ```
 
-2.项目启动后，可以运行 `QueryUserInfoTest.class` 的测试用例，查看测试用例的运行结果。
+2.项目启动后，运行测试用例 
 
+```
+运行测试用例有两种方式：
+1.直接执行单个测试用例，找到@Test注解，执行测试方法，如QueryUserInfoTest.class 类中有测试方法，可以直接执行
+2.运行 testdemo/testSuit下的xml文件
+```
 
+3.测试用例运行结束以后，可以查看测试报告。测试报告在`testdemo/target/test-report` 目录中，
 
 ### 步骤
 
