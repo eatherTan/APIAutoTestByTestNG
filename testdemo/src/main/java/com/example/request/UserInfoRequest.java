@@ -3,8 +3,6 @@ package com.example.request;
 import com.alibaba.fastjson.JSON;
 import com.example.asserts.QueryUserInfoAssert;
 import com.example.response.QueryUserInfoListResponse;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.testng.Assert;
 import util.HttpUtils;
 

@@ -13,6 +13,7 @@ import java.util.List;
 /**
  *
  * 这一部门的代码作为项目代码，给编写测试用例时使用
+ * 这样项目内部就有接口可以调用，不需要接外部接口
  */
 @Controller
 @RequestMapping("/pi/user/queryUserInfo")

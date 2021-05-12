@@ -52,7 +52,7 @@ public class BuildFrameworkUtil {
      */
     public static void createFramework(String pathTst, String pathReq, String pathAssert, Class request, Class response, String fileName, String constantsFile, String type ,String url,String comment) {
         if (request != null) request = getRequest(request);
-        constants = new TestFile(toFirstUpper(constantsFile),"com.example.data",false);
+        constants = new TestFile(toFirstUpper(constantsFile),"com.example.constants",false);
         test = new TestFile(toFirstUpper(fileName) + "Test", pathTst,true);
         req = new TestFile(toFirstUpper(fileName) + "Request", pathReq,true);
         assertfile = new TestFile(toFirstUpper(fileName) + "Assert", pathAssert,true);
@@ -72,7 +72,7 @@ public class BuildFrameworkUtil {
         req.addList("import java.util.HashMap;");
         req.addList("import com.example.data." + constantsFile + ";");
         req.addList("import com.example.proto.v1.UserProto.UserType;");
-        req.addList("import com.example.response.ResponseResult;");
+        req.addList("import util.ResponseResult;");
         req.addList("import org.testng.Assert;");
         req.addList("import " + assertfile.getFilePath() + "." + assertfile.getFileName() + ";");
         req.appendBody("\npublic class " + req.getFileName() + "{\r\n\n");

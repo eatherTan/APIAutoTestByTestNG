@@ -5,21 +5,33 @@
 	<!-- <properties resource="db.properties" /> -->
 	<!-- 绝对路径 -->
 	<classPathEntry
-			location="src/main/resources/mysql-connector-java-8.0.16.jar" />
+			location="src\main\resources\mysql-connector-java-8.0.16.jar" />
 	<context id="mysql2Beans" targetRuntime="MyBatis3">
 		<!-- JavaBean 实现 序列化 接口 -->
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
 		<!-- genenat entity时,生成toString -->
 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+		<!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->
+		<!--         <plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">   -->
+		<!-- 	        <property name="searchString" value="Mapper" /> -->
+		<!-- 	        <property name="replaceString" value="Dao" /> -->
+		<!--         </plugin>   -->
+
+		<!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
+		<!--         <plugin type="org.mybatis.generator.plugins.rename.RenameJavaMapperPlugin">   -->
+		<!-- 	        <property name="searchString" value="Mapper$" /> -->
+		<!-- 	        <property name="replaceString" value="Dao" /> -->
+		<!--         </plugin>   -->
+
 		<commentGenerator>
 			<!-- 删除代码中带有 代码生成器的注释信息 -->
 			<property name="suppressAllComments" value="true" />
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
 			<property name="suppressDate" value="true" />
 		</commentGenerator>
-
 		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-						connectionURL="jdbc:mysql://localhost:3306/seventh?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC"
+						connectionURL="jdbc:mysql://localhost:3306/tan?characterEncoding=utf8&amp;useSSL=true&amp;serverTimezone=Asia/Shanghai"
 						userId="root" password="123456" />
 
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和  NUMERIC 类型解析为java.math.BigDecimal -->
@@ -28,19 +40,43 @@
 		</javaTypeResolver>
 
 		<!-- 生成模型的包名和位置 -->
-		<javaModelGenerator targetPackage="com.example.entity"
+		<javaModelGenerator targetPackage="com.example.entity.domain"
 							targetProject=".\src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
+		<!-- 生成SQL map的XML文件生成器，
+               注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），
+               或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置
+               targetPackage/targetProject:同javaModelGenerator
+        -->
+		<sqlMapGenerator targetPackage="com.example.mapper"
+						 targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
+             targetPackage/targetProject:同javaModelGenerator
+              type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
+             1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+             2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+             3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
+         -->
+		<!--<javaClientGenerator targetPackage="com.example.mapper"
+		targetProject=".\src\main\java" type="XMLMAPPER">
+		<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>-->
+
 		<!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
 		<!--无论字段是什么类型，生成的类属性都是varchar -->
 
-		<table schema="test" tableName="user_info"
-			   domainObjectName="UserInfoDomain1" enableCountByExample="false"
+		<table schema="test" tableName="t_teacher_suspend_class_time"
+			   domainObjectName="TeacherSuspendClassTimeDomain" enableCountByExample="false"
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 		</table>
+
 
 	</context>
 </generatorConfiguration>
